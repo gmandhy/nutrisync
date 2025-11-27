@@ -1,0 +1,131 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-py"
+  recursive_type_depth = 5
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id             Int       @id @default(autoincrement())
+  email          String    @unique
+  password       String
+  name           String?
+  // New biometric fields
+  height         Float?    // in centimeters
+  weight         Float?    // in kilograms
+  age           Int?
+  gender        String?   // "Male" or "Female"
+  goal          String?   // e.g., "Weight Loss", "Muscle Gain", "Maintenance"
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  workouts       Workout[]
+  streaks        Streak[]
+  goals          Goal[]
+  achievements   Achievement[]
+  workoutPlans   WorkoutPlan[]
+  // New weight history tracking
+  weightHistory  WeightHistory[]
+}
+
+model WeightHistory {
+  id        Int      @id @default(autoincrement())
+  weight    Float    // in kilograms
+  date      DateTime @default(now())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Workout {
+  id             Int       @id @default(autoincrement())
+  date           DateTime
+  duration       Int       // in minutes
+  type           String
+  notes          String?
+  userId         Int
+  user           User      @relation(fields: [userId], references: [id])
+  exercises      Exercise[]
+  workoutPlanId  Int?      // New field
+  workoutPlan    WorkoutPlan? @relation(fields: [workoutPlanId], references: [id]) // New relation
+}
+
+
+
+model Exercise {
+  id             Int       @id @default(autoincrement())
+  name           String
+  sets           Int
+  reps           Int
+  weight         Float?
+  workoutId      Int
+  workout        Workout   @relation(fields: [workoutId], references: [id])
+}
+
+model Streak {
+  id             Int       @id @default(autoincrement())
+  startDate      DateTime
+  endDate        DateTime?
+  currentStreak  Int
+  longestStreak  Int
+  userId         Int
+  user           User      @relation(fields: [userId], references: [id])
+}
+
+model Goal {
+  id             Int       @id @default(autoincrement())
+  title          String
+  description    String?
+  targetDate     DateTime?
+  completed      Boolean   @default(false)
+  userId         Int
+  user           User      @relation(fields: [userId], references: [id])
+}
+
+model Achievement {
+  id             Int       @id @default(autoincrement())
+  title          String
+  description    String
+  dateEarned     DateTime
+  userId         Int
+  user           User      @relation(fields: [userId], references: [id])
+}
+
+model WorkoutPlan {
+  id             Int       @id @default(autoincrement())
+  name           String
+  description    String?
+  exercises      PlanExercise[]
+  userId         Int
+  user           User      @relation(fields: [userId], references: [id])
+  workouts       Workout[] // New relation
+}
+
+model PlanExercise {
+  id             Int       @id @default(autoincrement())
+  name           String
+  sets           Int
+  reps           Int
+  weight         Float?
+  workoutPlanId  Int
+  workoutPlan    WorkoutPlan @relation(fields: [workoutPlanId], references: [id])
+}
+
+model MotivationalQuote {
+  id             Int       @id @default(autoincrement())
+  quote          String
+  author         String?
+  dateDisplayed  DateTime?
+}
+
+model ExerciseOption {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  category  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

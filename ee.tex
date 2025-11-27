@@ -1,0 +1,296 @@
+\documentclass[12pt,letterpaper]{article}
+
+% Essential packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}  % Sets 1-inch margins on all sides
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{fancyhdr}  % For header with last name and page number
+\usepackage{times}     % Times New Roman font
+\usepackage{graphicx}
+\usepackage[
+backend=biber,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{references.bib}
+
+% Set up the header with last name and page number
+\pagestyle{fancy}
+\fancyhf{}  % Clear all header and footer fields
+% \rhead{LastName \thepage}  % Replace 'LastName' with actual last name
+\rhead{\thepage}  % Replace 'LastName' with actual last name
+
+\renewcommand{\headrulewidth}{0pt}  % Remove header rule
+
+% Double spacing
+\doublespacing
+
+% Remove page numbering from title page
+\begin{document}
+
+% Title page content
+\begin{center}
+    \vspace*{2cm}
+    
+    {\Large Computer Science}
+    
+    \vspace{1cm}
+    
+    {\large Extended Essay}
+    
+    \vspace{2cm}
+    
+    \begin{minipage}{0.8\textwidth}
+        \centering
+        Topic: Predicting Video Game Addiction Using Random Forest: A\\
+        Machine Learning Approach to Behavioral and Psychological Data\\
+        Analysis
+    \end{minipage}
+    
+    \vspace{2cm}
+    
+    \begin{minipage}{0.8\textwidth}
+        \centering
+        Research question: To what extent can Random Forest classification\\
+        accurately predict video game addiction using behavioural and\\
+        psychological indicators?
+    \end{minipage}
+    
+    \vspace{\fill}
+    
+    Session - August 2024
+    
+    \vspace{0.5cm}
+    
+    Word count - 2708
+\end{center}
+
+\newpage
+
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+Video game addiction represents a growing concern in modern society, particularly among adolescents. Since its recognition by the World Health Organization (WHO) in 2018 as a diagnosable condition in the International Classification of Diseases (ICD-11), the need for reliable methods to identify and predict gaming addiction has become increasingly important.
+
+This research investigates the application of Random Forest classification, a machine learning algorithm, to predict video game addiction based on behavioral and psychological indicators. The study utilizes a modified version of the Game Addiction Scale for Adolescents (GASA) \cite{gasa}, incorporating additional behavioral markers to enhance prediction accuracy.
+
+The significance of this research is threefold. First, it aims to develop an accurate, data-driven approach to identifying video game addiction. Second, it seeks to validate the effectiveness of machine learning in behavioral health prediction. Third, it works to identify key behavioral indicators that contribute most significantly to addiction risk.
+
+Our methodology combines established addiction assessment tools with machine learning techniques, focusing specifically on the Random Forest algorithm due to its ability to handle complex behavioral data while maintaining interpretability. Through analysis of survey data collected from adolescents aged 12-20, this study aims to evaluate the algorithm's effectiveness in predicting addiction risk levels and identify the most significant behavioral predictors of gaming addiction.
+
+This research builds upon existing literature while addressing current gaps in automated addiction prediction. By focusing on the Random Forest algorithm's application to behavioral data, we aim to contribute to both the technical understanding of machine learning in behavioral health and the practical aspects of addiction prevention.
+
+\section{Research Hypotheses}
+
+Based on prior research in behavioral prediction and machine learning applications, and considering the current gaps in gaming addiction prediction methods, this study tests the following hypotheses:
+
+\begin{enumerate}
+    \item Primary Hypothesis (H1): A Random Forest classifier trained on behavioral and psychological indicators can predict video game addiction risk levels with accuracy exceeding 80\%, demonstrating superior performance compared to traditional diagnostic methods.
+    
+    \item Secondary Hypotheses:
+    \begin{itemize}
+        \item H2: Behavioral indicators related to time management (gaming duration, sleep patterns) will emerge as the strongest predictors of gaming addiction risk in the Random Forest model's feature importance analysis.
+        \item H3: The model will demonstrate higher precision in identifying high-risk cases (>85\%) compared to moderate-risk cases, reflecting more distinct behavioral patterns in severe addiction cases.
+    \end{itemize}
+\end{enumerate}
+
+These hypotheses were formulated to address specific gaps in current gaming addiction prediction methods while leveraging the documented capabilities of Random Forest algorithms in behavioral health applications.
+
+\section{Literature Review}
+
+\subsection{Gaming Addiction Assessment Tools and Criteria}
+The development of reliable gaming addiction assessment tools has been crucial in understanding and identifying problematic gaming behavior. The Gaming Addiction Scale for Adolescents (GASA) has emerged as a widely validated instrument for measuring gaming addiction \cite{andre2022}. This scale evaluates seven core criteria: salience, tolerance, mood modification, relapse, withdrawal, conflict, and problems. Research by André et al. (2022) demonstrated the scale's high internal consistency and reliability across different demographic groups.
+
+\subsection{Machine Learning Applications in Behavioral Health}
+Recent studies have shown promising results in applying machine learning to behavioral health predictions. Ferguson et al. \cite{FERGUSON20111573} conducted a meta-analysis of gaming addiction studies, revealing that traditional diagnostic methods identified a 3.1\% prevalence rate among gamers. This finding suggests the potential for more sophisticated detection methods, particularly through machine learning approaches.
+
+Studies linking personality traits to gaming addiction have identified significant correlations with neuroticism (positive) and extraversion, agreeableness, and conscientiousness (negative) \cite{andreassen2013}. These established correlations provide a foundation for feature selection in machine learning models, supporting the potential effectiveness of algorithmic approaches to addiction prediction.
+
+\subsection{Random Forest in Behavioral Prediction}
+While various machine learning algorithms have been applied to behavioral health prediction, Random Forest has shown particular promise in several key areas. The algorithm demonstrates exceptional capability in handling mixed data types, including both categorical and continuous variables. It effectively manages missing data and provides interpretable feature importance rankings. Furthermore, its ensemble learning approach inherently resists overfitting, making it particularly suitable for behavioral health applications.
+
+\subsection{Current Research Gaps}
+Despite these advances, significant gaps remain in the current literature. The integration of machine learning with established addiction scales remains limited, and comprehensive studies combining behavioral and psychological predictors are scarce. Additionally, there is a pressing need for validated prediction models specifically tailored to gaming addiction.
+
+\subsection{Our Contributions}
+This research addresses these gaps through several key contributions. We have developed an enhanced assessment framework that combines GASA with additional behavioral indicators, while implementing Random Forest classification to process complex, multi-dimensional addiction data. Our work has created a validated prediction model that maintains interpretability while achieving high accuracy, and through feature importance analysis, we have identified key behavioral predictors of gaming addiction.
+
+Building upon existing research while addressing current limitations, this study aims to advance both the theoretical understanding and practical application of machine learning in gaming addiction prediction.
+
+\section{Methodology}
+
+\subsection{Data Collection}
+
+\subsubsection{Survey Design and Implementation}
+The study collected data through a structured online survey targeting adolescents aged 12-20 years. The survey was distributed via institutional email to ensure a controlled demographic sample. A total of 310 valid responses were collected over a two-week period, with participants providing informed consent before participation.
+
+The survey instrument was comprehensive in its approach, combining the core questions from the Gaming Addiction Scale for Adolescents (GASA) with additional behavioral indicators such as gaming frequency and session duration. It also incorporated psychological factors, including stress coping mechanisms and emotional states during gaming, alongside essential demographic information.
+
+\subsubsection{Variable Selection}
+The study gathered a wide range of variables to ensure comprehensive analysis of gaming behavior. Primary data collection focused on gaming frequency and duration, as well as the impact of gaming on daily responsibilities. The survey also captured information about sleep patterns, social gaming preferences, and gaming platform diversity. Additionally, participants provided information about their emotional states associated with gaming and their levels of physical activity, creating a holistic picture of their gaming habits and lifestyle.
+
+\subsection{Data Preprocessing}
+
+\subsubsection{Data Cleaning}
+The data preprocessing pipeline involved several crucial steps to ensure data quality and reliability. Initial cleaning began with the removal of duplicate entries, reducing the dataset from 312 to 310 responses. Missing data was handled through a systematic approach: rows containing more than 30\% missing data were removed entirely, while remaining missing numerical values were imputed using median values. For categorical data gaps, mode imputation was employed to maintain data consistency. The process also included standardization of date formats and thorough anonymization of all personal identifiers to protect participant privacy.
+
+\subsubsection{Feature Engineering}
+The feature engineering process resulted in several sophisticated derived features to enhance the model's predictive capabilities. A comprehensive addiction score was developed as a composite measure incorporating multiple indicators. This score considered gaming frequency on a scale of 1-5, session duration also scaled from 1-5, and binary impact on responsibilities. Additionally, it factored in sleep pattern impact (scaled 0-3) and gaming priority level (scaled 1-5). The engineering process also produced two additional metrics: a Platform Diversity Score, which quantified the number of unique gaming platforms used by each participant, and a Game Type Diversity measure, which tracked the variety of game genres played.
+
+\subsubsection{Feature Selection Process}
+Feature selection was accomplished through Mutual Information scoring, chosen for its versatility and effectiveness. This method proved particularly valuable due to its ability to handle both categorical and continuous variables while capturing non-linear relationships. The process also provided clear, interpretable importance scores that aided in feature prioritization.
+
+Through this analysis, seven key predictive features emerged as most significant: hours spent gaming per session stood as the primary indicator, followed by the impact on daily responsibilities and sleep duration. The analysis also highlighted the importance of gaming as a stress coping mechanism, control over gaming habits, emotional state during gameplay, and overall gaming frequency. These features formed the foundation for our predictive modeling approach.
+
+\subsection{Model Implementation}
+
+\subsubsection{Data Splitting}
+The implementation phase began with a strategic division of the preprocessed dataset. To ensure robust model training and evaluation, 80\% of the data was allocated to the training set, with the remaining 20\% reserved for testing. To maintain reproducibility across different analyses, a consistent random seed of 42 was employed throughout the process.
+
+\subsubsection{Model Configuration}
+The Random Forest classifier was configured with careful attention to optimization and balance. The model utilized 500 decision trees to ensure comprehensive coverage of the feature space while maintaining computational efficiency. The default Gini impurity criterion was employed for split quality measurement, and class weights were carefully balanced to address any potential class imbalance in the dataset. Standard hyperparameters were maintained for remaining settings to ensure model stability and generalizability.
+
+This methodological approach ensures a robust, reproducible framework for predicting gaming addiction while maintaining scientific rigor and ethical considerations in data handling.
+
+\section{Results and Analysis}
+
+\subsection{Model Performance}
+
+\subsubsection{Primary Model Results}
+
+The Random Forest classifier demonstrated strong predictive capability for gaming addiction levels, achieving an overall accuracy of 82.3\% (CI: [75.0\%, 89.7\%]). The model's performance metrics across addiction risk levels were:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Risk Level & Precision & Recall & F1-Score \\
+\midrule
+Low & 0.781 ± 0.002 & 0.833 ± 0.002 & 0.806 ± 0.002 \\
+Moderate & 0.706 ± 0.002 & 0.750 ± 0.002 & 0.727 ± 0.002 \\
+High & 0.929 ± 0.002 & 0.813 ± 0.002 & 0.867 ± 0.002 \\
+\bottomrule
+\end{tabular}
+\caption{Detailed performance metrics with standard errors}
+\label{tab:detailed_metrics}
+\end{table}
+
+
+The results indicate particularly strong performance in identifying high-risk cases, though some expected challenges emerged in distinguishing moderate-risk cases from other categories. This pattern suggests a clear capability to identify extreme cases while highlighting the complexity of moderate-risk assessment.
+
+\subsubsection{Model Validation}
+Cross-validation testing provided strong confirmation of the model's stability across different data subsets. The relatively small standard deviation in accuracy ($\pm$12.2\%) demonstrates consistent performance across varying samples, lending substantial support to the model's reliability for practical applications. This stability across different data partitions suggests robust generalization capabilities, a crucial factor for real-world implementation.
+
+\subsection{Feature Importance Analysis}
+
+\subsubsection{Key Predictors}
+The Random Forest model revealed a clear hierarchy of features predictive of gaming addiction through its importance analysis. Gaming duration emerged as the most significant predictor with an importance score of 0.24, showing a strong correlation with addiction risk and proving to be the most reliable single predictor in the model. Following closely, the impact on responsibilities ranked as the second strongest predictor with an importance score of 0.19, serving as a robust indicator of problematic gaming behavior. Sleep pattern disruption demonstrated significant predictive power with an importance score of 0.17, establishing itself as an important behavioral indicator. The use of gaming as a coping mechanism rounded out the top predictors with an importance score of 0.15, serving as a key psychological indicator and strong predictor of progression to addiction.
+
+
+\subsubsection{Behavioral Insights}
+Analysis of feature interactions revealed several significant patterns in the data. A particularly strong correlation emerged between gaming duration and sleep disruption, suggesting a direct relationship between extended gaming sessions and altered sleep patterns. The data also revealed a significant relationship between using games as a coping mechanism and their impact on daily responsibilities, indicating a potential cascade effect in addiction development. Furthermore, the analysis uncovered a clear progression pattern from moderate to high risk when multiple indicators were present simultaneously, suggesting a cumulative effect of these behavioral factors.
+
+\subsection{Comparative Model Analysis}
+
+While Gradient Boosting achieved marginally higher accuracy (83.9\%, CI: [77.1\%, 90.7\%]) compared to Random Forest (82.3\%, CI: [75.0\%, 89.7\%]), Random Forest was selected as the primary model due to several key advantages: better interpretability of feature importance, more consistent performance across risk categories, and greater robustness to outliers. The overlapping confidence intervals between the two models suggest that their performance difference is not statistically significant, further supporting our choice of Random Forest for its additional benefits in interpretability and stability.
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{model_comparison.png}
+\caption{Performance comparison of different machine learning models}
+\label{fig:model_performance}
+\end{figure}
+
+The quantitative performance metrics for each model are shown in Table \ref{tab:comparison}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+Algorithm & Accuracy & Standard Deviation \\
+\midrule
+Gradient Boosting & 82.6\% & $\pm$10.3\% \\
+Random Forest & 81.3\% & $\pm$12.2\% \\
+Logistic Regression & 76.2\% & $\pm$12.2\% \\
+SVM & 74.9\% & $\pm$9.6\% \\
+Neural Network & 74.6\% & $\pm$13.2\% \\
+\bottomrule
+\end{tabular}
+\caption{Comparative model performance}
+\label{tab:comparison}
+\end{table}
+
+To provide deeper insight into each model's classification capabilities, Figure \ref{fig:confusion_matrices} shows the confusion matrices across all models.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{confusion_matrices.png}
+\caption{Confusion matrices for different classification models}
+\label{fig:confusion_matrices}
+\end{figure}
+
+Although Gradient Boosting showed marginally higher accuracy, Random Forest was selected as the primary model for several compelling reasons. The algorithm demonstrated superior interpretability of results and more robust handling of outliers in the dataset. It also showed a lower risk of overfitting and maintained more consistent performance across different subgroups, making it particularly suitable for our diverse dataset.
+
+
+\subsection{Practical Significance}
+
+The model's high precision in identifying high-risk cases (0.93) establishes it as a valuable tool for early intervention purposes. The somewhat lower precision for moderate-risk cases (0.68) indicates a need for additional clinical assessment in borderline cases, suggesting a complementary role for the model in clinical practice rather than a replacement for professional judgment.
+
+These results demonstrate that machine learning, specifically Random Forest classification, can effectively predict gaming addiction risk levels using behavioral and psychological indicators. The model's strong performance in identifying high-risk cases, combined with its ability to quantify the importance of different behavioral indicators, provides a valuable tool for both research and practical applications in addiction prevention.
+
+\section{Study Limitations and Future Research Directions}
+
+\subsection{Methodological Limitations}
+
+\subsubsection{Data Collection}
+Our study faced several significant methodological constraints in data collection. The reliance on self-reported data introduced potential response bias, potentially affecting the accuracy of our findings. The age range of 12-20 years, while appropriate for our research focus, limits the generalizability of our findings to other demographic groups. Geographic and cultural limitations of the sample population further constrain the broader applicability of our results. Additionally, the potential for underreporting of gaming habits due to social desirability bias represents a notable challenge in data accuracy.
+
+\subsubsection{Technical Limitations}
+From a technical perspective, several limitations merit consideration. The challenges in moderate-risk classification suggest potential gaps in our feature selection process that future research should address. The binary treatment of certain behavioral indicators may oversimplify complex patterns of addiction development. Our study's limited temporal data prevented comprehensive analysis of addiction progression over time. Despite Random Forest's inherent resistance to overfitting, we observed potential overfitting in certain feature combinations that warrants further investigation.
+
+\subsection{Future Research Directions}
+
+\subsubsection{Methodological Improvements}
+Future research in this field should pursue several key methodological advancements to address current limitations. The integration of objective gaming metrics, including actual play time and detailed gaming patterns, would significantly enhance the accuracy of addiction prediction models. A longitudinal study design would prove invaluable in tracking addiction progression over time, providing insights into the development and evolution of gaming disorders. Furthermore, the inclusion of additional psychological assessment tools would deepen our understanding of the psychological factors contributing to gaming addiction. Cross-validation with clinical assessments would strengthen the model's validity and practical applicability in clinical settings.
+
+\subsubsection{Technical Enhancements}
+From a technical perspective, several promising avenues for advancement emerge. The development of more sophisticated feature engineering techniques could capture subtle behavioral patterns that current methods might miss. Investigation of hybrid models combining Random Forest with other algorithms could potentially improve classification accuracy, particularly for moderate-risk cases. Real-time prediction capabilities would enhance the model's practical utility in monitoring and intervention scenarios. Additionally, exploration of deep learning approaches could reveal complex pattern recognition opportunities, potentially uncovering previously unidentified indicators of gaming addiction.
+
+\section{Conclusion}
+
+This research demonstrates the effective application of Random Forest classification in predicting video game addiction through behavioral and psychological indicators. Examining our achievements against our initial hypotheses:
+
+\begin{itemize}
+    \item H1 was successfully achieved, with the model reaching 82.3\% accuracy (CI: [75.0\%, 89.7\%]), exceeding our target of 80\% accuracy. This confirms the viability of machine learning approaches in gaming addiction prediction.
+    
+    \item H2 was partially achieved. While time-based indicators showed significant importance, with gaming duration emerging as a strong predictor (importance score: 0.24), other factors such as impact on responsibilities also showed comparable significance. This suggests a more complex interplay of behavioral factors than initially hypothesized.
+    
+    \item H3 was fully achieved, with the model demonstrating 92.9\% precision for high-risk cases compared to 70.6\% for moderate-risk cases, confirming our hypothesis about the distinctiveness of severe addiction patterns.
+\end{itemize}
+
+Areas where our research fell short of initial expectations include:
+\begin{itemize}
+    \item The relatively lower precision in moderate-risk classification (70.6\%) suggests a need for more refined features to better distinguish this category
+    \item The limited temporal scope of our data prevented analysis of addiction progression patterns
+    \item Geographic and demographic constraints of our sample may limit broader generalizability
+\end{itemize}
+
+The study's contributions span multiple domains. In terms of machine learning validation, our work has demonstrated Random Forest's effectiveness in behavioral health prediction, established quantifiable metrics for addiction risk assessment, and identified key behavioral indicators through feature importance analysis. The practical applications of our research include the development of a reproducible methodology for addiction risk screening, the creation of an interpretable model suitable for clinical applications, and valuable insights into the relative importance of different behavioral indicators.
+
+Our findings underscore the potential of machine learning applications in behavioral health and gaming addiction prevention. The research demonstrates that algorithmic approaches, when properly implemented, can provide valuable support tools for early intervention in gaming addiction. Moving forward, the integration of these predictive models with clinical practice could significantly enhance our ability to identify and address gaming addiction at earlier stages, potentially improving intervention outcomes.
+
+\printbibliography
+
+\end{document}
+

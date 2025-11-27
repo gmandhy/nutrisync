@@ -1,0 +1,9 @@
+| Date | Action | Details | Comments | Date Completed |
+| ---- | ------ | ------  | -------- | -------------- |
+|28th July 2024| Project concept, strategy, and goals | Identified key features and user needs for the gym app. | The app will focus on tracking gym attendance, workout logs, dietary habits, and achievements to maintain user motivation. | 1st Aug 2024 |
+| 1st Aug 2024 |Development of Gym App |	Outlined the app’s structure, including backend and frontend components.|	Emphasis on user-friendly design, using Python for backend and Flet for frontend.|	2nd Aug 2024|
+|3rd Aug 2024	|Backend Development|	Started coding the backend functionalities, such as user data management, daily streak counter, and workout logging.|	Backend development focused on accurate data handling and integration with the frontend.|	8th Aug 2024	|
+|10th Aug 2024|	Frontend Development|	Implemented the frontend interface, ensuring intuitive navigation and design.|	Utilized Flet for creating responsive and interactive UI elements.|	20th Aug 2024|
+|24th Aug 2024|	Feature Integration	|Integrated backend and frontend components, ensuring seamless data flow and user interactions.|	All features (workout logging, streak counter, achievements) are connected and functional.|	28th Aug 2024|
+|1st Sept 2024|	App Testing	Conducted thorough testing to identify and fix any bugs or issues.|	Ensured that all functionalities work correctly, and the user experience is smooth.|	5th Sept 2024|
+|25th Sept 2024|	Final Review and Deployment	|Final review and polishing of the app before deployment.|	Addressed any remaining issues and prepared the app for launch.|	5th Oct 2024|

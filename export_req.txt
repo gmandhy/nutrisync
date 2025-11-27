@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/71769359/how-to-use-python-poetry-to-install-package-to-a-virtualenv-in-a-standalone-fash

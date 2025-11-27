@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "nutrisync-2"
+version = "0.1.0"
+description = ""
+authors = ["Munjaal <munjaal7@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+flet = "^0.24.0"
+prisma = "^0.15.0"
+pytz = "^2024.1"
+bcrypt = "^4.2.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
